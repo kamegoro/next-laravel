@@ -62,29 +62,14 @@ export default {
         login: '/login', 
         logout: '/login', 
         callback: false,
-        home: '/home'
+        home: '/'
     },
     strategies: {
-        User: {
-            provider: 'laravel/jwt',
-            url: '/Users',
-            token: {
-                property: 'access_token',
-                maxAge: 60 * 60,
-            },
-            refreshToken: {
-                property: 'access_token',
-                maxAge: 20160 * 60,
-            },
-            
-            endpoints: {
-                login: { url: '/login', method: 'post', propertyName: 'access_token' },
-                logout: { url: '/logout', method: 'post' },
-                refresh: { url: '/refresh', method: 'post' , propertyName: 'access_token'}, 
-                user: { url: '/me', method: 'get', propertyName: false},
-            }
-        }
-    },
+      laravelApi: {
+        provider: 'laravel/sanctum',
+        url: process.env.API_BROWSER_URL,
+      },
+    }
 },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
